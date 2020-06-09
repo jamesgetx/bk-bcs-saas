@@ -13,6 +13,7 @@
 #
 import logging
 
+from django.conf import settings
 from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -33,7 +34,7 @@ class UserInfoViewSet(APIView):
         user = request.user
 
         data = {
-            "avatar_url": "",
+            "avatar_url": f'{settings.BK_PAAS_HOST}/static/img/getheadimg.jpg',
             "username": user.username,
         }
         return Response(data)
